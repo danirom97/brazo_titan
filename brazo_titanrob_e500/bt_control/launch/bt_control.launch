@@ -1,0 +1,29 @@
+<launch>
+
+  <rosparam file="$(find bt_control)/config/bt_joint_states.yaml" command="load" ns="/bt"/>
+
+  <rosparam file="$(find bt_control)/config/bt_joint_controllers.yaml" command="load" ns="/bt"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/bt" args="joint_state_controller
+				   joint1_controller
+				   joint2_controller
+				   joint3_controller
+				   joint4_controller
+				   joint_pext_controller
+				   joint_pint_controller"/>
+
+  <!-- node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/bt/joint_states" />
+  </node -->
+
+  <!-- node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/bt/joint_states" />
+  </node -->
+
+  <node name="joint_control" pkg="bt_joystick" type="joystick"/>
+  <node name="listener" pkg="bt_joystick" type="transfer.py"/>
+
+</launch>

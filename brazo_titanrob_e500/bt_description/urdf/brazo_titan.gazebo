@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot>
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/bt</robotNamespace>
+    </plugin>
+  </gazebo>
+  <gazebo reference="base_link">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_1">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_2">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_3">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  <gazebo reference="link_4">
+    <turnGravityOff>true</turnGravityOff>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="pinza_int">
+    <turnGravityOff>true</turnGravityOff>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="pinza_ext">
+    <turnGravityOff>true</turnGravityOff>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="payload">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+</robot>

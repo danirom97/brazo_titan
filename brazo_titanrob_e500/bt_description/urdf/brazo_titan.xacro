@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="brazo_titan" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find bt_description)/urdf/brazo_titan.gazebo" />
+
+  <link name="world"/>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.19298 0.0075955 0.0625"
+        rpy="0 0 0" />
+      <mass
+        value="6.1853" />
+      <inertia
+        ixx="0.012184"
+        ixy="0.00090223"
+        ixz="1.3835E-17"
+        iyy="0.056236"
+        iyz="3.9457E-19"
+        izz="0.052383" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/base_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.64706 0.64706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/base_link.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint 
+    name="fixed" type="fixed">
+    <parent 
+      link="world"/>
+    <child 
+      link="base_link"/>
+  </joint>
+  <link
+    name="link_1">
+    <inertial>
+      <origin
+        xyz="0.024982 -5.4947E-19 0.049118"
+        rpy="0 0 0" />
+      <mass
+        value="1.4127" />
+      <inertia
+        ixx="0.0031914"
+        ixy="2.1342E-19"
+        ixz="0.00026697"
+        iyy="0.0047943"
+        iyz="3.3862E-20"
+        izz="0.0048415" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/link_1.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/link_1.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0112"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.559"
+      upper="1.6755"
+      effort="1000"
+      velocity="10" />
+  </joint>
+
+  <transmission name="trans_1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="motor_1">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="joint_1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link
+    name="link_2">
+    <inertial>
+      <origin
+        xyz="-0.0010762 -0.15432 3.5974E-07"
+        rpy="0 0 0" />
+      <mass
+        value="10.827" />
+      <inertia
+        ixx="0.071505"
+        ixy="-0.011714"
+        ixz="-2.2654E-08"
+        iyy="0.052068"
+        iyz="-6.3036E-07"
+        izz="0.09606" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/link_2.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/link_2.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_2"
+    type="revolute">
+    <origin
+      xyz="0.11544 0 0.03787"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="link_1" />
+    <child
+      link="link_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1.5708"
+      effort="1000"
+      velocity="10" />
+  </joint>
+
+  <transmission name="trans_2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="motor_2">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="joint_2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link
+    name="link_3">
+    <inertial>
+      <origin
+        xyz="0.0817310104576687 0.105548084762186 -2.15780091702272E-19"
+        rpy="0 0 0" />
+      <mass
+        value="5.00252289603041" />
+      <inertia
+        ixx="0.028518009278965"
+        ixy="-0.0020223288525813"
+        ixz="4.88907697870278E-19"
+        iyy="0.00695567946184861"
+        iyz="1.4370815545716E-19"
+        izz="0.0299838082009635" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/link_3.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/link_3.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_3"
+    type="revolute">
+    <origin
+      xyz="0 -0.31584 0"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="link_2" />
+    <child
+      link="link_3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.0472"
+      upper="0.9948"
+      effort="1000"
+      velocity="10" />
+  </joint>
+
+  <transmission name="trans_3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="motor_3">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="joint_3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link
+    name="link_4">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 2.35227269212332E-17 0.0122671947156228"
+        rpy="0 0 0" />
+      <mass
+        value="1.56825521057727" />
+      <inertia
+        ixx="0.00104946856895735"
+        ixy="-1.60135374033666E-20"
+        ixz="-5.72328435517316E-19"
+        iyy="0.00131914968783349"
+        iyz="-3.04755803489809E-19"
+        izz="0.00194007626413219" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/link_4.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/link_4.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_4"
+    type="continuous">
+    <origin
+      xyz="0.0855 0.24429 0"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="link_3" />
+    <child
+      link="link_4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-12.56"
+      upper="12.56"
+      effort="10000"
+      velocity="10" />
+  </joint>
+
+  <transmission name="trans_4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="motor_4">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="joint_4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link
+    name="pinza_ext">
+    <inertial>
+      <origin
+        xyz="0.034158 -0.019093 -2.3821E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.41047" />
+      <inertia
+        ixx="0.00027959"
+        ixy="7.9948E-05"
+        ixz="1.1208E-20"
+        iyy="0.00064223"
+        iyz="5.7896E-21"
+        izz="0.00050574" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/pinza_ext.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/pinza_ext.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_pext"
+    type="revolute">
+    <origin
+      xyz="0.03875 0 0.016"
+      rpy="-1.5708 -1.5708 0" />
+    <parent
+      link="link_4" />
+    <child
+      link="pinza_ext" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.7854"
+      effort="100"
+      velocity="10" />
+    <dynamics friction="0.2"/>
+  </joint>
+
+  <transmission name="trans_pext">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="motor_pext">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="joint_pext">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link
+    name="pinza_int">
+    <inertial>
+      <origin
+        xyz="0.035616 -0.01923 -1.0611E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.37023" />
+      <inertia
+        ixx="0.00019226"
+        ixy="7.9138E-05"
+        ixz="-5.2467E-21"
+        iyy="0.00054598"
+        iyz="-4.9631E-21"
+        izz="0.00048593" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/pinza_int.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bt_description/meshes/pinza_int.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_pint"
+    type="revolute">
+    <origin
+      xyz="-0.03875 0 0.016"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="link_4" />
+    <child
+      link="pinza_int" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.7854"
+      effort="100"
+      velocity="10" />
+    <dynamics friction="0.2"/>
+  </joint>
+
+  <transmission name="trans_pint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="motor_pint">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="joint_pint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link
+    name="payload">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 1.5708" />
+      <mass
+        value="0.00001" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+  <joint
+    name="payload"
+    type="revolute">
+    <origin
+      xyz="0 0 0.24524"
+      rpy="0 0 0" />
+    <parent
+      link="link_4" />
+    <child
+      link="payload" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0.000001"
+      upper="0.00001"
+      effort="100"
+      velocity="10" />
+  </joint>
+
+</robot>

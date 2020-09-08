@@ -1,0 +1,29 @@
+joint1_controller:
+  type: "effort_controllers/JointVelocityController"
+  joint: joint_1
+  pid: {p: 50.0, i: 30000.0, d: 0.0}
+
+joint2_controller:
+  type: "effort_controllers/JointVelocityController"
+  joint: joint_2
+  pid: {p: 270.0, i: 162000.0, d: 0.0}
+
+joint3_controller:
+  type: "effort_controllers/JointVelocityController"
+  joint: joint_3
+  pid: {p: 30.5, i: 40666.7, d: 0.0}
+
+joint4_controller:
+  type: "effort_controllers/JointVelocityController"
+  joint: joint_4
+  pid: {p: 5.0, i: 540.0, d: 0.00007}
+
+joint_pext_controller:
+  type: "effort_controllers/JointVelocityController"
+  joint: joint_pext
+  pid: {p: 1.2, i: 720.0, d: 0.0003}
+
+joint_pint_controller:
+  type: "effort_controllers/JointVelocityController"
+  joint: joint_pint
+  pid: {p: 1.2, i: 720.0, d: 0.0003}
